@@ -1,11 +1,11 @@
-import java.util.Scanner;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
+//import java.util.Scanner;
+//import java.math.BigInteger;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.time.LocalDate;
+//import java.time.format.DateTimeFormatter;
+//import java.time.format.DateTimeParseException;
+//
 //      Задача №1
 //
 //    public static int findMax(int num1, int num2) throws Exception {
@@ -383,31 +383,12 @@ import java.time.format.DateTimeParseException;
 //    }
 //
 //     Задача №19
-//
-//    public static double tempo(double cel) throws IllegalArgumentException {
-//        final double ZERO = -273.15;
-//        if (cel < ZERO) {
-//            throw new IllegalArgumentException("температура ниже абсолютного нуля");
-//        }
-//        return (cel * 9/5) + 32;
+//    public static double celsiusToFahrenheit(double celsius) throws IllegalArgumentException {
+//    if (celsius < -273.15) {
+//        throw new IllegalArgumentException("Температура меньше абсолютного нуля");
 //    }
-//
-//    public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//
-//        try {
-//            System.out.print("введите температуру в Цельсиях: ");
-//            double cel = scanner.nextDouble();
-//
-//            double farengate = tempo(cel);
-//            System.out.println("температура в Фаренгейтах: " + farengate);
-//        } catch (IllegalArgumentException e) {
-//            System.out.println("ошибка: " + e.getMessage());
-//        } finally {
-//            scanner.close();
-//        }
-//    }
-//
+//    return celsius * 9 / 5 + 32;
+// }
 //     Задача №20
 //
 //    public static void check(String str) throws IllegalArgumentException {
@@ -425,7 +406,7 @@ import java.time.format.DateTimeParseException;
 //
 //            check(input);
 //            System.out.println("строка корректна.");
-//} catch (IllegalArgumentException e) {
+// } catch (IllegalArgumentException e) {
 //            System.out.println("ошибка: " + e.getMessage());
 //        } finally {
 //            scanner.close();

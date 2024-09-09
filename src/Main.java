@@ -1,398 +1,434 @@
 import java.util.Scanner;
-import java.util.Stack;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
-// public class Program {
+//      Задача №1
+//
+//    public static int findMax(int num1, int num2) throws Exception {
+//        if (num1 == num2) {
+//            throw new Exception("числа равны");
+//        }
+//        return Math.max(num1, num2);
+//    }
+//
 //    public static void main(String[] args) {
-//        System.out.println("4ИСИП-221 Беляев Вадим");
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//
+//            System.out.print("первое число: ");
+//            int num1 = scanner.nextInt();
+//
+//            System.out.print("второе число: ");
+//            int num2 = scanner.nextInt();
+//
+//
+//            int max = findMax(num1, num2);
+//            System.out.println("максимум: " + max);
+//        } catch (Exception e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//
+//            scanner.close();
+//        }
 //    }
-//    Задание №1
-// public static void main(String[] args) {
 //
-//    Scanner scanner = new Scanner(System.in);
-//    System.out.print("Введите целое число: ");
-//    int number = scanner.nextInt();
+//      Задача №2
 //
-//    if (number % 2 == 0) {
-//        System.out.println("Число " + number + " является четным");
-//    } else {
-//        System.out.println("Число " + number + " является нечетным");
+//    public static double divide(double dividend, double divisor) throws Exception {
+//        if (divisor == 0) {
+//            throw new Exception("на ноль делить нельзя");
+//        }
+//        return dividend / divisor;
 //    }
 //
-//    scanner.close();
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//            System.out.print("делимое: ");
+//            double dividend = scanner.nextDouble();
+//
+//            System.out.print("делитель: ");
+//            double divisor = scanner.nextDouble();
+//
+//            double result = divide(dividend, divisor);
+//            System.out.println("результат: " + result);
+//        } catch (Exception e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            // Закрытие Scanner
+//            scanner.close();
+//        }
+//    }
+//
+//      Задача №3
+//        public static int convertToInt(String str) throws NumberFormatException {
+//               return Integer.parseInt(str);
 //}
 //
-//    Задание №2
-// public static void main(String[] args) {
-//    System.out.println("№2.Введите три числа:");
-//    int a = scanner.nextInt();
-//    int b = scanner.nextInt();
-//    int c = scanner.nextInt();
-//    int min = Math.min(Math.min(a, b), c);
-//        System.out.println("Минимальное число: " + min);
-//
-//    Задание №3
-// public static void main(String[] args) {
-//    System.out.println("№3.Таблица умножения на 5:");
-//    for (int i = 1; i <= 10; i++) {
-//    System.out.println("5 x " + i + " = " + (5 * i));
+//      Задача №4
+//        public static void checkAge(int age) throws IllegalArgumentException {
+//            if (age < 0 || age > 150) {
+//                throw new IllegalArgumentException("Недопустимый возраст");
+//            }
 //       }
 //
-//    Задание №4
-// public static void main(String[] args) {
-//
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите целое число N: ");
-//    int N = scanner.nextInt();
-//    int sum = 0;
-//    for (int i = 1; i <= N; i++) {
-//        sum += i;
-//    }
-//    System.out.println("Сумма всех чисел от 1 до " + N + " равна: " + sum);
-//    scanner.close();
-//}
-//
-//    Задание №5
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите количество чисел Фибоначчи, которые вы хотите вывести: ");
-//    int N = scanner.nextInt();
-//
-//    if (N <= 0) {
-//        System.out.println("Количество чисел должно быть положительным числом.");
-//    } else {
-//        System.out.println("Первые " + N + " чисел Фибоначчи:");
-//
-//        int first = 0;
-//        int second = 1;
-//
-//        for (int i = 1; i <= N; i++) {
-//            System.out.print(first + " ");
-//
-//            int next = first + second;
-//            first = second;
-//            second = next;
-//        }
-//        System.out.println();
-//    }
-//
-//    scanner.close();
-//}
-//
-//    Задание №6
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите целое число: ");
-//    int number = scanner.nextInt();
-//
-//    if (number <= 1) {
-//        System.out.println(number + " не является простым числом.");
-//    } else {
-//        boolean isPrime = true;
-//        for (int i = 2; i <= Math.sqrt(number); i++) {
-//            if (number % i == 0) {
-//                isPrime = false;
-//                break;
+//      Задача №5
+//        public static double findSquareRoot(double num) throws IllegalArgumentException {
+//            if (num < 0) {
+//                throw new IllegalArgumentException("Число отрицательное");
 //            }
+//           return Math.sqrt(num);
 //        }
-//        if (isPrime) {
-//            System.out.println(number + " является простым числом.");
-//        } else {
-//            System.out.println(number + " не является простым числом.");
+//
+//      Задача №6
+//
+//    public static BigInteger calculateFactorial(int number) throws IllegalArgumentException {
+//        if (number < 0) {
+//            throw new IllegalArgumentException("число не положительное. Получено: " + number);
 //        }
+//        BigInteger factorial = BigInteger.ONE;
+//        for (int i = 1; i <= number; i++) {
+//            factorial = factorial.multiply(BigInteger.valueOf(i));
+//        }
+//        return factorial;
 //    }
 //
-//    scanner.close();
-//}
-//
-//    Задание №7
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите целое число N: ");
-//    int N = scanner.nextInt();
-//
-//    if (N <= 0) {
-//        System.out.println("Введите положительное число.");
-//    } else {
-//        System.out.println("Числа от " + N + " до 1 в обратном порядке:");
-//        for (int i = N; i >= 1; i--) {
-//            System.out.print(i + " ");
-//        }
-//        System.out.println();
-//    }
-//    scanner.close();
-//}
-//
-//    Задание №8
-// public static void main(String[] args) {
-//
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите целое число A: ");
-//    int A = scanner.nextInt();
-//    System.out.print("Введите целое число B: ");
-//    int B = scanner.nextInt();
-//
-//    int sum = 0;
-//
-//    if (A > B) {
-//        System.out.println("A должно быть меньше или равно B.");
-//    } else {
-//        if (A % 2 != 0) {
-//            A++;
-//        }
-//        for (int i = A; i <= B; i += 2) {
-//            sum += i;
-//        }
-//        System.out.println("Сумма четных чисел от A до B: " + sum);
-//    }
-//    scanner.close();
-//}
-//
-//    Задание №9
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите строку: ");
-//    String input = scanner.nextLine();
-//
-//    String reversed = "";
-//
-//    for (int i = input.length() - 1; i >= 0; i--) {
-//        reversed += input.charAt(i);
-//    }
-//
-//    System.out.println("Обратный порядок строки: " + reversed);
-//
-//    scanner.close();
-//}
-//    Задание №10
 //    public static void main(String[] args) {
-//        System.out.println("№10.Введите число для подсчета цифр:");
-//    number = scanner.nextInt();
-//    int digitCount = String.valueOf(Math.abs(number)).length();
-//        System.out.println("Количество цифр в числе: " + digitCount);
+//        Scanner scanner = new Scanner(System.in);
 //
-//    Задание №11
+//        try {
+//            System.out.print("введите число для вычисления факториала: ");
+//            int number = scanner.nextInt();
+//
+//            BigInteger result = calculateFactorial(number);
+//            System.out.println("факториал: " + result);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
+//    }
+//
+//       Задача №7
+//
 //    public static void main(String[] args) {
-//       System.out.println("№11.Введите число N для вычисления факториала:");
-//    N = scanner.nextInt();
-//    long factorial = 1;
-//    for (int i = 2; i <= N; i++) {
-//    factorial *= i;
-//}
-//      System.out.println("Факториал числа " + N + " = " + factorial);
+//        Scanner scanner = new Scanner(System.in);
 //
-//     Задание №12
-//     public static void main(String[] args) {
-//       System.out.println("№12.Введите число для нахождения суммы его цифр:");
-//     number = scanner.nextInt();
-//     sum = 0;
-//       while (number != 0) {
-//         sum += Math.abs(number % 10);
-//       number /= 10;
-//     }
-//        System.out.println("Сумма цифр числа = " + sum);
+//        try {
+//            System.out.print("введите количество элементов в массиве: ");
+//            int size = scanner.nextInt();
+//            int[] array = new int[size];
 //
-//    Задание №13
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
+//            System.out.println("введите элементы массива:");
+//            for (int i = 0; i < size; i++) {
+//                array[i] = scanner.nextInt();
+//            }
 //
-//    System.out.print("Введите строку: ");
-//    String input = scanner.nextLine();
-//
-//    String cleanedInput = input.replaceAll("\\W", "").toLowerCase();
-//    String reversedInput = new StringBuilder(cleanedInput).reverse().toString();
-//
-//    if (cleanedInput.equals(reversedInput)) {
-//        System.out.println("Строка является палиндромом");
-//    } else {
-//        System.out.println("Строка не является палиндромом.");
-//    }
-//
-//    scanner.close();
-//}
-//    Задание №14
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите размер массива: ");
-//    int size = scanner.nextInt();
-//
-//    int[] array = new int[size];
-//
-//    System.out.println("Введите элементы массива:");
-//    for (int i = 0; i < size; i++) {
-//        array[i] = scanner.nextInt();
-//    }
-//
-//    int max = array[0];
-//    for (int i = 1; i < size; i++) {
-//        if (array[i] > max) {
-//            max = array[i];
+//            check0(array);
+//            System.out.println("массив не содержит нулей.");
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
 //        }
 //    }
-//    System.out.println("Максимальное число в массиве: " + max);
-//    scanner.close();
-//}
-//
-//    Задание №15
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите размер массива: ");
-//    int size = scanner.nextInt();
-//
-//    int[] array = new int[size];
-//
-//    System.out.println("Введите элементы массива:");
-//    int sum = 0;
-//    for (int i = 0; i < size; i++) {
-//        array[i] = scanner.nextInt();
-//        sum += array[i];
-//    }
-//    System.out.println("Сумма всех элементов массива: " + sum);
-//    scanner.close();
-//}
-//
-//    Задание №16
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите размер массива: ");
-//    int size = scanner.nextInt();
-//
-//    int[] array = new int[size];
-//
-//    System.out.println("Введите элементы массива:");
-//    int positiveCount = 0;
-//    int negativeCount = 0;
-//
-//    for (int i = 0; i < size; i++) {
-//        int number = scanner.nextInt();
-//        array[i] = number;
-//        if (number > 0) {
-//            positiveCount++;
-//        } else if (number < 0) {
-//            negativeCount++;
-//        }
-//    }
-//    System.out.println("Количество положительных чисел: " + positiveCount);
-//    System.out.println("Количество отрицательных чисел: " + negativeCount);
-//
-//    scanner.close();
-//}
-//
-//    Задание №17
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
-//
-//    System.out.print("Введите число A: ");
-//    int A = scanner.nextInt();
-//
-//    System.out.print("Введите число B: ");
-//    int B = scanner.nextInt();
-//
-//    if (A > B) {
-//        System.out.println("Неверный диапазон. A должно быть меньше или равно B.");
-//    } else {
-//        System.out.println("Простые числа в диапазоне от " + A + " до " + B + ":");
-//        for (int i = A; i <= B; i++) {
-//            if (isPrime(i)) {
-//                System.out.print(i + " ");
+//    public static void check0(int[] array) throws IllegalArgumentException {
+//        for (int value : array) {
+//            if (value == 0) {
+//                throw new IllegalArgumentException("массив содержит нули");
 //            }
 //        }
-//        System.out.println();
 //    }
-//    scanner.close();
-//}
-//    private static boolean isPrime(int number) {
-//        if (number <= 1) {
-//            return false;
+//
+//      Задача №8
+//
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//            System.out.print("введите основание: ");
+//            double base = scanner.nextDouble();
+//
+//            System.out.print("введите степень: ");
+//            int exponent = scanner.nextInt();
+//
+//            double result = a(base, exponent);
+//            System.out.println("результат возведения в степень: " + result);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
 //        }
-//        if (number == 2) {
-//            return true; // 2 - единственное четное простое число
+//    }
+//    public static double a(double base, int exponent) throws IllegalArgumentException {
+//        if (exponent < 0) {
+//            throw new IllegalArgumentException("степень не может быть отрицательной. Получено: " + exponent);
 //        }
-//        if (number % 2 == 0) {
-//            return false; // Четные числа больше 2 не простые
+//        return Math.pow(base, exponent);
+//    }
+//
+//       Задача №9
+//
+//    public static String trimString(String str, int length) throws IllegalArgumentException {
+//        if (length > str.length()) {
+//            throw new IllegalArgumentException("число символов для обрезки больше длины строки.");
 //        }
-//        for (int i = 3; i * i <= number; i += 2) {
-//            if (number % i == 0) {
-//                return false;
+//        return str.substring(0, length);
+//    }
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//            System.out.print("введите строку: ");
+//            String input = scanner.nextLine();
+//
+//            System.out.print("введите количество символов для обрезки: ");
+//            int length = scanner.nextInt();
+//
+//            String result = trimString(input, length);
+//            System.out.println("обрезанная строка: " + result);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
+//    }
+//
+//      Задача №10
+//
+//    public static int findElement(int[] array, int element) throws IllegalArgumentException {
+//        for (int i = 0; i < array.length; i++) {
+//            if (array[i] == element) {
+//                return i;
 //            }
 //        }
-//        return true;
+//        throw new IllegalArgumentException("элемент " + element + " не найден в массиве.");
 //    }
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
 //
-//    Задание №18
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
-//    System.out.print("Введите строку: ");
-//    String inputString = scanner.nextLine();
+//        try {
+//            System.out.print("введите количество элементов в массиве: ");
+//            int size = scanner.nextInt();
+//            int[] array = new int[size];
 //
-//     int vowelCount = 0;
-//     int consonantCount = 0;
-//     for (int i = 0; i < inputString.length(); i++) {
-//      char ch = Character.toLowerCase(inputString.charAt(i));
-//       if (ch >= 'a' && ch <= 'z') {
-//         if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
-//           vowelCount++;
-//        } else {
-//          consonantCount++;
-//       }
-//     }
-//  }
-//     System.out.println("Количество гласных букв: " + vowelCount);
-//     System.out.println("Количество согласных букв: " + consonantCount);
+//            System.out.println("введите элементы массива:");
+//            for (int i = 0; i < size; i++) {
+//                array[i] = scanner.nextInt();
+//            }
 //
-//    Задание №19
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
+//            System.out.print("введите элемент для поиска: ");
+//            int element = scanner.nextInt();
 //
-//    System.out.print("Введите строку: ");
-//    String input = scanner.nextLine();
-//
-//    String[] words = input.split("\\s+");
-//
-//    Stack<String> stack = new Stack<>();
-//    for (String word : words) {
-//        stack.push(word);
-//    }
-//
-//    System.out.println("Строка со словами в обратном порядке:");
-//    while (!stack.isEmpty()) {
-//        System.out.print(stack.pop());
-//        if (!stack.isEmpty()) {
-//            System.out.print(" ");
+//            int index = findElement(array, element);
+//            System.out.println("элемент найден на позиции: " + index);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
 //        }
 //    }
 //
-//    scanner.close();
-//}
-//    Задание №20
-// public static void main(String[] args) {
-//    Scanner scanner = new Scanner(System.in);
+//  Задача №11
 //
-//    System.out.print("Введите целое число: ");
-//    int number = scanner.nextInt();
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
 //
-//    int originalNumber = number;
-//    int sum = 0;
-//    int numberOfDigits = String.valueOf(number).length();
+//        try {
+//            System.out.print("введите целое число: ");
+//            int number = scanner.nextInt();
 //
-//    while (number > 0) {
-//        int digit = number % 10;
-//        sum += Math.pow(digit, numberOfDigits);
-//        number /= 10;
+//            String binaryString = con(number);
+//            System.out.println("число в двоичной системе: " + binaryString);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
 //    }
-//    if (sum == originalNumber) {
-//        System.out.println(originalNumber + " является числом Армстронга.");
-//    } else {
-//        System.out.println(originalNumber + " не является числом Армстронга.");
+//    public static String con(int number) throws IllegalArgumentException {
+//        if (number < 0) {
+//            throw new IllegalArgumentException("число не может быть отрицательным. Получено: " + number);
+//        }
+//        return Integer.toBinaryString(number);
 //    }
-//    scanner.close();
 //}
+//   Задача №12
+//            public static boolean isDivisible(int dividend, int divisor) throws ArithmeticException {
+//                if (divisor == 0) {
+//                    throw new ArithmeticException("Деление на ноль недопустимо");
+//                }
+//                return dividend % divisor == 0;
+//            }
+//
+//    Задача №13
+//            public static <T> T getElementFromList(List<T> list, int index) throws IndexOutOfBoundsException {
+//                return list.get(index);
+//            }
+//
+//    Задача №14
+//            public static void checkPassword(String password) throws WeakPasswordException {
+//                if (password.length() < 8) {
+//                    throw new WeakPasswordException("Пароль слишком короткий");
+//                }
+//            }
+//
+//    Задача №15
+//
+//    public static void validateDate(String dateString) throws DateTimeParseException {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+//        LocalDate date = LocalDate.parse(dateString, formatter);
+//    }
+//
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//            System.out.print("введите дату в формате dd.MM.yyyy: ");
+//            String dateString = scanner.nextLine();
+//
+//            validateDate(dateString);
+//            System.out.println("дата корректна.");
+//        } catch (DateTimeParseException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
+//    }
+//
+//    Задача №16
+//
+//    public static String concatenateStrings(String str1, String str2) throws NullPointerException {
+//        if (str1 == null || str2 == null) {
+//            throw new NullPointerException("одна или обе строки равны null");
+//        }
+//        return str1 + str2;
+//    }
+//
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//            System.out.print("введите первую строку: ");
+//            String str1 = scanner.nextLine();
+//
+//            System.out.print("введите вторую строку: ");
+//            String str2 = scanner.nextLine();
+//
+//            String result = concatenateStrings(str1, str2);
+//            System.out.println("результат конкатенации: " + result);
+//        } catch (NullPointerException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
+//
+//     Задача №17
+//
+//    public static int zxc(int dividend, int divisor) throws ArithmeticException {
+//        if (divisor == 0) {
+//            throw new ArithmeticException("деление на ноль невозможно.");
+//        }
+//        return dividend % divisor;
+//    }
+//
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//            System.out.print("введите делимое: ");
+//            int dividend = scanner.nextInt();
+//
+//            System.out.print("введите делитель: ");
+//            int divisor = scanner.nextInt();
+//
+//            int remainder = zxc(dividend, divisor);
+//            System.out.println("остаток от деления: " + remainder);
+//        } catch (ArithmeticException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
+//    }
 //}
+//       Задача №18
+//
+//    public static double cxz(double number) throws IllegalArgumentException {
+//        if (number < 0) {
+//            throw new IllegalArgumentException("нельзя вычислять квадратный корень из отрицательного числа.");
+//        }
+//        return Math.sqrt(number);
+//    }
+//
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//            System.out.print("введите число: ");
+//            double number = scanner.nextDouble();
+//
+//            double squareRoot = cxz(number);
+//            System.out.println("квадратный корень числа: " + squareRoot);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
+//    }
+//
+//     Задача №19
+//
+//    public static double tempo(double cel) throws IllegalArgumentException {
+//        final double ZERO = -273.15;
+//        if (cel < ZERO) {
+//            throw new IllegalArgumentException("температура ниже абсолютного нуля");
+//        }
+//        return (cel * 9/5) + 32;
+//    }
+//
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//            System.out.print("введите температуру в Цельсиях: ");
+//            double cel = scanner.nextDouble();
+//
+//            double farengate = tempo(cel);
+//            System.out.println("температура в Фаренгейтах: " + farengate);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
+//    }
+//
+//     Задача №20
+//
+//    public static void check(String str) throws IllegalArgumentException {
+//        if (str == null || str.isEmpty()) {
+//            throw new IllegalArgumentException("строка пустая/равна null.");
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try {
+//            System.out.print("введите строку: ");
+//            String input = scanner.nextLine();
+//
+//            check(input);
+//            System.out.println("строка корректна.");
+//} catch (IllegalArgumentException e) {
+//            System.out.println("ошибка: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
+//    }/
+//
